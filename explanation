@@ -1,0 +1,11 @@
+command_gold determines how much distance there is until the next waypoint.
+
+dvc_drive_rerouting tracks how much distance has been covered, and will loop until reaching destination.
+
+dvc_drive_in_breakable works as drive_in, but can interrupt when the sensor detects a wall. it returns how much distance was successfully covered for Rerouting to track.
+
+when hitting an obstacle, the Rerouter function will see if there is at least 15 inches remaining before the next waypoint to actually execute the manuever.
+
+if so, wait a few seconds then try and do a manuever. If successful, subtract 15 inches from the remaining leg's distance. Otherwise, just wait in place until the object moves.
+
+once the waypoint is reached, we go back into our command_gold and use normal gopigo turning before repeating the cycle for the next waypoint.
